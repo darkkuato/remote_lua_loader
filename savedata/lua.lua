@@ -210,6 +210,11 @@ function lua.resolve_game(luaB_auxwrap)
         eboot_addrofs = gadget_table.fuyu_kiss.eboot_addrofs
         libc_addrofs = gadget_table.fuyu_kiss.libc_addrofs
         gadgets = gadget_table.fuyu_kiss.gadgets
+    elseif game_name == "HaruotoAlice" then
+        print("[+] Game identified as CUSA14324 Haruoto Alice * Gram: Snow Drop")
+        eboot_addrofs = gadget_table.haruoto_alice.eboot_addrofs
+        libc_addrofs = gadget_table.haruoto_alice.libc_addrofs
+        gadgets = gadget_table.haruoto_alice.gadgets
     end
 end
 
