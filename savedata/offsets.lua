@@ -1083,54 +1083,55 @@ gadget_table = {
     haruoto_alice = {
         gadgets = {
             ["ret"] = 0x4C,
+
             ["pop rsp; ret"] = 0xA42,
             ["pop rbp; ret"] = 0x79,
             ["pop rax; ret"] = 0xA32,
-            ["pop rbx; ret"] = 0x4D1535,
+            ["pop rbx; ret"] = 0xD1535,
             ["pop rcx; ret"] = 0xD32,
-            ["pop rdx; ret"] = 0x7EAD17,
-            ["pop rdi; ret"] = 0x4D71C2,
-            ["pop rsi; ret"] = 0x4A5376,
-            ["pop r8; ret"] = 0xA31,
+            ["pop rdx; ret"] = 0x3EAD17,
+            ["pop rdi; ret"] = 0xD71C2,
+            ["pop rsi; ret"] = 0xA5376,
+            ["pop r8; ret"] = 0xa31,
 
-            ["mov r9, rbx; call [rax + 8]"] = 0x550660,
+            ["mov r9, rbx; call [rax + 8]"] = 0x150660,
 
-            ["pop r13; pop r14; pop r15; ret"] = 0x514F53,
-            ["mov r9, r13; call [rax + 8]"] = 0x53B864,
+            ["pop r13; pop r14; pop r15; ret"] = 0x114F53,
+            ["mov r9, r13; call [rax + 8]"] = 0x13B864,
 
-            ["mov [rax + 8], rcx; ret"] = 0x53B7EA,
-            ["mov [rax + 0x28], rdx; ret"] = 0x54E8BF,
-            ["mov [rcx + 0xa0], rdi; ret"] = 0x4D550E,
-            ["mov r9, [rax + rsi + 0x18]; xor eax, eax; mov [r8], r9; ret"] = 0x51BF02,
+            ["mov [rax + 8], rcx; ret"] = 0x13B7EA,
+            ["mov [rax + 0x28], rdx; ret"] = 0x14E8BF,
+            ["mov [rcx + 0xa0], rdi; ret"] = 0xD550E,
+            ["mov r9, [rax + rsi + 0x18]; xor eax, eax; mov [r8], r9; ret"] = 0x11BF02,
             ["add rax, r8; ret"] = 0xAC43,
 
-            ["mov [rdi], rsi; ret"] = 0x4D56DF,
-            ["mov [rdi], rax; ret"] = 0x497CEB,
-            ["mov [rdi], eax; ret"] = 0x497CEC,
+            ["mov [rdi], rsi; ret"] = 0xD56DF,
+            ["mov [rdi], rax; ret"] = 0x97CEB,
+            ["mov [rdi], eax; ret"] = 0x97CEC,
 
-            ["add [rbx], eax; ret"] = 0x8253FF,
+            ["add [rbx], eax; ret"] = 0x4253FF,
             ["add [rbx], ecx; ret"] = nil,
-            ["add [rbx], edi; ret"] = 0x803653,
-            ["mov rax, [rax]; ret"] = 0x42069B,
-            ["inc dword [rax]; ret"] = 0x59A78B,
+            ["add [rbx], edi; ret"] = 0x403653,
+            ["mov rax, [rax]; ret"] = 0x2069B,
+            ["inc dword [rax]; ret"] = 0x19A78B,
 
-            ["cmp [rax], ebx; ret"] = 0x805B48,
-            ["sete al; ret"] = 0x45E515,
+            ["cmp [rax], ebx; ret"] = 0x405B48,
+            ["sete al; ret"] = 0x5E515,
             ["setne al; ret"] = 0x573,
-            ["seta al; ret"] = 0x56CABE,
-            ["setb al; ret"] = 0x45E534,
+            ["seta al; ret"] = 0x16CABE,
+            ["setb al; ret"] = 0x5E534,
             ["setg al; ret"] = nil,
-            ["setl al; ret"] = 0x4CF9EA,
-            ["shl rax, cl; ret"] = 0x4D9F61,
-            ["add rax, rcx; ret"] = 0x43681E,
+            ["setl al; ret"] = 0xCF9EA,
+            ["shl rax, cl; ret"] = 0xD9F61,
+            ["add rax, rcx; ret"] = 0x3681E,
 
             stack_pivot = {
-                ["mov esp, 0xfb0000bd; ret"] = 0x7B4054,
-                ["mov esp, 0xf00000b9; ret"] = 0x7B9D9C,
+                ["mov esp, 0xfb0000bd; ret"] = 0x3B4054,
+                ["mov esp, 0xf00000b9; ret"] = 0x3B9D9C,
             }
         },
         eboot_addrofs = {
-            fake_string = 0x4d8160,
+            fake_string = 0x4D8164,
             luaB_auxwrap = 0x1a1070,
             longjmp_import = 0x4f3c88,
 
@@ -1155,18 +1156,18 @@ gadget_table = {
             longjmp = 0x802f0,
             strerror = 0xcf70,
             error = 0x13e,
-            sceKernelGetModuleInfoFromAddr = 0x198,
-            gettimeofday_import = 0xd79a8,
+            sceKernelGetModuleInfoFromAddr = 0x568,
+            gettimeofday_import = 0xefe20,
 
-            Thrd_join = 0x8c570,
-            Thrd_exit = 0x8c5f0,
-            Thrd_create = 0x8c770,
+            Thrd_join = 0x21f00,
+            Thrd_exit = 0x21f80,
+            Thrd_create = 0x22090,
 
-            Mtx_init = 0x8ca00,
-            Mtx_lock = 0x8caa0,
-            Mtx_unlock = 0x8ca90,
+            Mtx_init = 0x22320,
+            Mtx_lock = 0x223b0,
+            Mtx_unlock = 0x223b0,
 
-            Atomic_fetch_add_8 = 0x37b80
+            Atomic_fetch_add_8 = 0xe380
         }
 
     },
