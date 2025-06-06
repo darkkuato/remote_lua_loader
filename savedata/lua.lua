@@ -58,6 +58,11 @@ function lua.setup_primitives()
     lua.setup_initial_read_primitive()  -- one small step
     lua.resolve_address()  -- break aslr and resolve offsets
     lua.setup_victim_table()  -- setup better addrof primitive  
+
+    do
+        local str = lua.create_str("hello") 
+        print("[✓] fake_string test:", str)
+    end
 end
 
 -- allocate a limited length string with a known address
@@ -210,17 +215,16 @@ function lua.resolve_game(luaB_auxwrap)
         eboot_addrofs = gadget_table.fuyu_kiss.eboot_addrofs
         libc_addrofs = gadget_table.fuyu_kiss.libc_addrofs
         gadgets = gadget_table.fuyu_kiss.gadgets
-    elseif game_name == "FuyuKiss" then
-        print("[+] Game identified as Fuyu Kiss")
-        eboot_addrofs = gadget_table.fuyu_kiss.eboot_addrofs
-        libc_addrofs = gadget_table.fuyu_kiss.libc_addrofs
-        gadgets = gadget_table.fuyu_kiss.gadgets
-    end
     elseif game_name == "NoraPrincess2" then
         print("[+] Game identified as CUSA13586 Nora Princess and Stray Cat Heart HD 2")
         eboot_addrofs = gadget_table.nora_princess2.eboot_addrofs
         libc_addrofs = gadget_table.nora_princess2.libc_addrofs
         gadgets = gadget_table.nora_princess2.gadgets
+    elseif game_name == "HaruotoAlice" then
+        print("[+] Game identified as CUSA14324 Haruoto Alice * Gram: Snow Drop")
+        eboot_addrofs = gadget_table.haruoto_alice.eboot_addrofs
+        libc_addrofs = gadget_table.haruoto_alice.libc_addrofs
+        gadgets = gadget_table.haruoto_alice.gadgets
     end
 end
 
@@ -278,6 +282,9 @@ function lua.resolve_address()
 
     -- resolve libc
     print("[debug] libc_addrofs.longjmp = " .. tostring(libc_addrofs.longjmp))  -- puede ser nil
+    print("DEBUG: eboot_base =", hex(eboot_base))
+    print("DEBUG: longjmp_import =", hex(eboot_addrofs.longjmp_import))
+    print("DEBUG: libc_addrofs.longjmp =", hex(libc_addrofs.longjmp))
     libc_base = memory.read_qword(eboot_addrofs.longjmp_import) - libc_addrofs.longjmp
     print("[+] libc base @ " .. hex(libc_base))
     
